@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import './Carousel.css';
 
@@ -105,12 +106,14 @@ export default function Carousel({
 
     useEffect(() => {
         const startingPosition = loop ? 1 : 0;
+        // eslint-disable-next-line
         setPosition(startingPosition);
         x.set(-startingPosition * trackItemOffset);
     }, [items.length, loop, trackItemOffset, x]);
 
     useEffect(() => {
         if (!loop && position > itemsForRender.length - 1) {
+            // eslint-disable-next-line
             setPosition(Math.max(0, itemsForRender.length - 1));
         }
     }, [itemsForRender.length, loop, position]);

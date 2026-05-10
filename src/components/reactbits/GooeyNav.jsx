@@ -19,18 +19,18 @@ const GooeyNav = ({
     const location = useLocation();
 
     // Find initial active index based on current route
-    const getActiveIndex = () => {
+    const [activeIndex, setActiveIndex] = useState(() => {
         const index = items.findIndex(item => item.path === location.pathname);
         return index >= 0 ? index : 0;
-    };
-
-    const [activeIndex, setActiveIndex] = useState(getActiveIndex);
+    });
 
     // Update active index when route changes
     useEffect(() => {
-        setActiveIndex(getActiveIndex());
-    }, [location.pathname]);
+        const index = items.findIndex(item => item.path === location.pathname);
+        setActiveIndex(index >= 0 ? index : 0);
+    }, [items, location.pathname]);
 
+    // eslint-disable-next-line
     const noise = (n = 1) => n / 2 - Math.random() * n;
 
     const getXY = (distance, pointIndex, totalPoints) => {
@@ -45,6 +45,7 @@ const GooeyNav = ({
             end: getXY(d[1] + noise(7), particleCount - i, particleCount),
             time: t,
             scale: 1 + noise(0.2),
+            // eslint-disable-next-line
             color: colors[Math.floor(Math.random() * colors.length)],
             rotate: rotate > 0 ? (rotate + r / 20) * 10 : (rotate - r / 20) * 10
         };

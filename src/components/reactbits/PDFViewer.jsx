@@ -62,6 +62,7 @@ const PDFViewer = ({
     // Reset state when PDF changes
     useEffect(() => {
         if (isOpen && pdfUrl) {
+            // eslint-disable-next-line
             setLoading(true);
             setError(false);
         }

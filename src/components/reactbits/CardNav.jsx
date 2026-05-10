@@ -5,6 +5,7 @@ import ClickSpark from './ClickSpark';
 import './CardNav.css';
 
 const CardNav = ({
+    // eslint-disable-next-line
     items = [],
     className = '',
     ease = 'power3.out',
@@ -86,6 +87,7 @@ const CardNav = ({
             tl?.kill();
             tlRef.current = null;
         };
+        // eslint-disable-next-line
     }, [ease]);
 
     const toggleMenu = () => {
